@@ -1,0 +1,43 @@
+{
+  "transcriptor": {
+    "device": "cuda",
+    "language": "pt",
+    "batch_size": 16,
+    "compute_type": "float16",
+    "model_name": "medium"
+  },
+  "mic": {
+    "audio_file": "cache.mp3",
+    "device_index": 4,
+    "frame_length": 512,
+    "silence_frames": 60,
+    "volume_threshold": 500,
+    "messages": {
+      "RECORDING": "Recording...",
+      "IDLE": "..."
+    }
+  },
+  "actions": {
+    "exit": {
+      "id": "exit",
+      "keywords": [
+        "SAIR",
+        "BYE",
+        "EXIT",
+        "FECHAR",
+        "BYE",
+        "BYE BYE",
+        "TERMINAR",
+        "ENCERRAR",
+        "TCHAU",
+        "TCHAU TCHAU"
+      ]
+    },
+    "learn": {
+      "id": "learn",
+      "keywords": [
+        "APRENDA"
+      ]
+    }
+  }
+}
