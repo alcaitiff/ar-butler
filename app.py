@@ -1,7 +1,7 @@
-from mic import Mic
-from configloader import ConfigLoader
-from transcriptor import Transcriptor
-from actionparser import Parser
+from lib.mic import Mic
+from lib.configloader import ConfigLoader
+from lib.transcriptor import Transcriptor
+from lib.actionparser import Parser
 
 def main():
   cfg = ConfigLoader().get_config()
