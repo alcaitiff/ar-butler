@@ -21,6 +21,13 @@
     }
   },
   "actions": {
+    "yes": {
+      "id": "yes",
+      "keywords": [
+        "YES",
+        "SIM"
+      ]
+    },
     "exit": {
       "id": "exit",
       "keywords": [
@@ -43,12 +50,31 @@
         "APRENDA"
       ]
     },
+    "forget": {
+      "id": "forget",
+      "keywords": [
+        "FORGET",
+        "ESQUEÇA"
+      ]
+    },
     "dump": {
       "id": "dump",
       "keywords": [
         "DUMP",
+        "DUMP MEMORY",
         "SHOW MEMORY DATA",
-        "MOSTRAR A MEMORIA"
+        "MOSTRE A MEMÓRIA",
+        "MOSTRE MEMÓRIA",
+        "MOSTRAR A MEMÓRIA",
+        "MOSTRAR MEMÓRIA",
+        "APRESENTE A MEMÓRIA",
+        "APRESENTE MEMÓRIA",
+        "APRESENTAR MEMÓRIA",
+        "APRESENTAR A MEMÓRIA",
+        "LISTE A MEMÓRIA",
+        "LISTE MEMÓRIA",
+        "LISTAR MEMÓRIA",
+        "LISTAR A MEMÓRIA"
       ]
     }
   }

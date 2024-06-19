@@ -4,8 +4,8 @@ class Dump:
   def __init__(self, config):
     self.cfg = config
 
-  # Function for detect action
-  def do_action(self,msg):
-    print("DUMPING MEMORY: ("+msg+")")
-    with open(self.cfg.memory.text_file_path, "r") as myfile:
-      print(myfile.read())
+  def do_action(self):
+    print("DUMPING MEMORY:")
+    with open(self.cfg.memory.text_file_path, "r") as file:
+      for i, line in enumerate(file):
+        print('\033[92m '+str(i)+'\033[0m: '+line.strip())

@@ -12,7 +12,7 @@ def main():
     while True:
       mic.detect_and_record()
       msg=transcriptor.transcribe(cfg.mic.audio_file)
-      parser.parse_action(msg)
+      parser.parse_action(msg,mic,transcriptor)
   except KeyboardInterrupt:
     print('Keyboard Interruption')
   except ValueError:  
