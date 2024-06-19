@@ -1,4 +1,7 @@
 {
+  "memory": {
+    "text_file_path": "memory.txt"
+  },
   "transcriptor": {
     "device": "cuda",
     "language": "pt",
@@ -21,22 +24,31 @@
     "exit": {
       "id": "exit",
       "keywords": [
-        "SAIR",
         "BYE",
         "EXIT",
-        "FECHAR",
         "BYE",
         "BYE BYE",
-        "TERMINAR",
-        "ENCERRAR",
         "TCHAU",
-        "TCHAU TCHAU"
+        "TCHAU TCHAU",
+        "SAIR",
+        "FECHAR",
+        "TERMINAR",
+        "ENCERRAR"
       ]
     },
     "learn": {
       "id": "learn",
       "keywords": [
+        "LEARN",
         "APRENDA"
+      ]
+    },
+    "dump": {
+      "id": "dump",
+      "keywords": [
+        "DUMP",
+        "SHOW MEMORY DATA",
+        "MOSTRAR A MEMORIA"
       ]
     }
   }

@@ -7,21 +7,16 @@ def main():
   cfg = ConfigLoader().get_config()
   transcriptor = Transcriptor(cfg.transcriptor)
   mic = Mic(cfg.mic)
-  parser = Parser(cfg.actions)
+  parser = Parser(cfg)
   try:
     while True:
       mic.detect_and_record()
       msg=transcriptor.transcribe(cfg.mic.audio_file)
-      action = parser.parse_action(msg)
-      match action:
-        case cfg.actions.exit.id:
-          break
-        case cfg.actions.learn.id:
-          print("LEARNING: "+'\033[33m'+msg.split(' ',1)[1]+'\033[0m')
-        case _:
-          print("User input: "+'\033[32m'+msg+'\033[0m')
+      parser.parse_action(msg)
   except KeyboardInterrupt:
     print('Keyboard Interruption')
+  except ValueError:  
+    print('Command Interruption')
   print('bye')
 
 main()
