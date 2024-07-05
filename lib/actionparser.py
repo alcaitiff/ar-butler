@@ -24,7 +24,7 @@ class Parser:
     first_word=self.first_word(clean_msg)
     if first_word in actions.learn.keywords and len(clean_msg.split())>1:
       return Learn(self.cfg).do_action(msg)
-    if first_word in actions.forget.keywords and len(clean_msg.split())>1:
-      return Forget(self.cfg).do_action(msg,mic,transcriptor)
+    if clean_msg in actions.forget.keywords:
+      return Forget(self.cfg).do_action(mic,transcriptor)
    
     print("User input: "+'\033[32m'+msg+'\033[0m')

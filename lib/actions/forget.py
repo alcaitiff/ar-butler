@@ -46,9 +46,17 @@ class Forget:
     except FileNotFoundError:
       print("Error: No memory found.")
 
-  def do_action(self,msg,mic,transcriptor):
+  def do_action(self,mic,transcriptor):
     self.mic=mic
     self.transcriptor=transcriptor
-    arg=msg.strip().split(' ',1)[1].translate(str.maketrans(dict.fromkeys(',!.;:', '')))
-    print("Forgeting: "+arg)
-    self.delete_line_from_file(self.cfg.memory.text_file_path,int(arg))
+    while True:
+      try:
+        print("Forgeting, say the number index for the memory as 'number 2'")
+        msg = self.get_answer().upper()
+        arg=msg.strip().split(' ',1)[1].translate(str.maketrans(dict.fromkeys(',!.;:', '')))
+        self.delete_line_from_file(self.cfg.memory.text_file_path,int(arg))
+        return 
+      except IndexError:
+        print("Try again")
+      except ValueError:
+        print("Sorry "+arg+" does not appear to be a number")
