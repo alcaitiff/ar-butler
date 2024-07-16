@@ -4,8 +4,10 @@ class Learn:
   def __init__(self, config):
     self.cfg = config
 
-  def do_action(self,msg):
+  def do_action(self,msg,rag):
     data=msg.split(' ',1)[1]
     print("LEARNING: "+'\033[33m'+data+'\033[0m')
     with open(self.cfg.memory.text_file_path, "a") as myfile:
       myfile.write(data+"\n")
+    rag.encode(self.cfg.memory.text_file_path)
+    

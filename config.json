@@ -2,9 +2,13 @@
   "memory": {
     "text_file_path": "memory.txt"
   },
+  "rag": {
+    "embedder_name": "all-MiniLM-L6-v2",
+    "embeddings_file_path": "embeddings.pt"
+  },
   "transcriptor": {
     "device": "cuda",
-    "language": "pt",
+    "language": "en",
     "batch_size": 16,
     "compute_type": "float16",
     "model_name": "medium"
@@ -64,6 +68,8 @@
         "DUMP MEMORY",
         "SHOW MEMORY DATA",
         "MOSTRE A MEMÓRIA",
+        "MOSTRE A MEMORIA",
+        "MOSTRE MEMORIA",
         "MOSTRE MEMÓRIA",
         "MOSTRAR A MEMÓRIA",
         "MOSTRAR MEMÓRIA",
