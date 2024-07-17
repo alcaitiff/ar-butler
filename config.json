@@ -1,24 +1,26 @@
 {
   "memory": {
-    "text_file_path": "memory.txt"
+    "text_file_path": "outputs/memory.txt"
   },
   "rag": {
     "embedder_name": "all-MiniLM-L6-v2",
-    "embeddings_file_path": "embeddings.pt"
+    "embeddings_file_path": "outputs/embeddings.pt"
   },
   "tts": {
-    "model_file_path": "assets/xtts/model.pth",
-    "config_file_path": "assets/xtts/config.json"
+    "model_path": "assets/xtts",
+    "config_file_path": "assets/xtts/config.json",
+    "speaker_wav": "assets/speakers/Morgan.wav",
+    "audio_file": "outputs/xtts.wav"
   },
   "transcriptor": {
     "device": "cuda",
-    "language": "en",
+    "language": "pt",
     "batch_size": 16,
     "compute_type": "float16",
     "model_name": "medium"
   },
   "mic": {
-    "audio_file": "cache.mp3",
+    "audio_file": "outputs/cache.mp3",
     "device_index": 4,
     "frame_length": 512,
     "silence_frames": 60,

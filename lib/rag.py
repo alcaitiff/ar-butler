@@ -1,15 +1,19 @@
-from sentence_transformers import SentenceTransformer
-import torch
 import os
+import re
+import torch
+from translate import Translator
+from sentence_transformers import SentenceTransformer
 # Retrieval-Augmented Generation
 class Rag:
   cfg = {}
   embedder = {}
   embeddings = {}
-
+  model_language = "en"
+  translator = {}
   def __init__(self, config):
     self.cfg = config
     self.embedder = SentenceTransformer(config.rag.embedder_name)
+    self.translator= Translator(from_lang=self.cfg.transcriptor.language,to_lang=self.model_language)
     if os.path.isfile(self.cfg.rag.embeddings_file_path) and os.access(self.cfg.rag.embeddings_file_path,os.R_OK):
       self.embeddings = torch.load(self.cfg.rag.embeddings_file_path)
     else:
@@ -17,14 +21,21 @@ class Rag:
 
   def encode(self,file_name):
     with open(file_name, "r") as data_file:
-      data = data_file.readlines()
+      data = self.read_in_model_laguange(data_file)
+      print(data)
       self.embeddings_size = len(data)
     self.embeddings = self.embedder.encode(data, convert_to_tensor=True)
     torch.save(self.embeddings,self.cfg.rag.embeddings_file_path)
 
+  def read_in_model_laguange(self,file):
+    return list(map(self.translate,file.readlines()))
+  
+  def translate(self,line):
+    return '. '.join(list(map(self.translator.translate,line.split('. '))))
+
   def retrieve(self,query):
     result = []
-    query_embedding = self.embedder.encode(query, convert_to_tensor=True)
+    query_embedding = self.embedder.encode(self.translator.translate(query), convert_to_tensor=True)
     with open(self.cfg.memory.text_file_path, "r") as data_file:
       data = data_file.readlines()
       top_k = min(5,len(data))

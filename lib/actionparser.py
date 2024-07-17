@@ -27,8 +27,8 @@ class Parser:
     if clean_msg in actions.forget.keywords:
       return Forget(self.cfg).do_action(mic,transcriptor,rag)
    
-    print("User input: "+'\033[32m'+msg+'\033[0m')
+    print('\033[32m'+msg+'\033[0m')
     context = rag.retrieve(msg)
     xtts.predict(msg)
-    player.play()
+    player.play(self.cfg.tts.audio_file)
     

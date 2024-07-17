@@ -16,7 +16,7 @@ if __name__ == '__main__':
     rag = Rag(cfg)
     parser = Parser(cfg)
     transcriptor = Transcriptor(cfg.transcriptor)
-    xtts = XTTS()
+    xtts = XTTS(cfg)
     player = Player()
 
     try:

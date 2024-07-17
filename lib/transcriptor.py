@@ -10,7 +10,7 @@ class Transcriptor:
 
   # Function for transcribe
   def transcribe(self,file_path):
-    print("Transcribing...")
+    #print("Transcribing...")
     audio = whisperx.load_audio(file_path)
     result = self.model.transcribe(audio, batch_size=self.cfg.batch_size)
     msg = ''
