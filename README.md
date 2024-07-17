@@ -28,7 +28,7 @@ conda activate ar-butler && python3 app.py
 
 ## Special Commands
 
-```json
+```plain
 Learn:  add something on memory
 Forget: remove something from memory
 Dump:   show the memory 
