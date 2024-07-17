@@ -16,6 +16,7 @@ conda create -n ar-butler python=3.10
 conda activate ar-butler
 conda install pytorch==2.0.0 torchaudio==2.0.0 torchvision pytorch-cuda=11.8 -c pytorch -c nvidia && pip install git+https://github.com/m-bain/whisperx.git
 pip install -r requirements.txt
+cd assets/xtts && wget -c "https://huggingface.co/coqui/XTTS-v2/resolve/main/model.pth?download=true" -O model.pth && cd -
 ```
 
 ## Usage

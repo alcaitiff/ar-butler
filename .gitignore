@@ -3,3 +3,4 @@ __pycache__
 run.sh
 memory.txt
 embeddings.pt
+*.pth

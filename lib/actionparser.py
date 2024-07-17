@@ -1,6 +1,7 @@
 from lib.actions.dump import Dump
 from lib.actions.learn import Learn
 from lib.actions.forget import Forget
+
 class Parser:
   cfg = {}
   def __init__(self, config):
@@ -13,7 +14,7 @@ class Parser:
       return ''
 
   # Function for detect action
-  def parse_action(self,msg,mic,transcriptor,rag):
+  def parse_action(self,msg,mic,transcriptor,rag,xtts,player):
     clean_msg = msg.upper().strip().translate(msg.maketrans(dict.fromkeys(',!.;:', '')))
     actions = self.cfg.actions
     if clean_msg in actions.exit.keywords:
@@ -28,4 +29,6 @@ class Parser:
    
     print("User input: "+'\033[32m'+msg+'\033[0m')
     context = rag.retrieve(msg)
+    xtts.predict(msg)
+    player.play()
     

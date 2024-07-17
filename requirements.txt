@@ -105,3 +105,5 @@ whisperx @ git+https://github.com/m-bain/whisperx.git@f2da2f858e99e4211fe4f64b5f
 yarl==1.9.4
 pvrecorder==1.2.2
 sentence-transformers
+tts
+pyaudio

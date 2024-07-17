@@ -6,6 +6,10 @@
     "embedder_name": "all-MiniLM-L6-v2",
     "embeddings_file_path": "embeddings.pt"
   },
+  "tts": {
+    "model_file_path": "assets/xtts/model.pth",
+    "config_file_path": "assets/xtts/config.json"
+  },
   "transcriptor": {
     "device": "cuda",
     "language": "en",
