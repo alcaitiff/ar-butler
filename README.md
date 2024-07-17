@@ -2,7 +2,7 @@
 
 ![Logo](./assets/logo.png)
 
-This is an python application to listen your commands and answer your questions using local LLMs and RAG.
+This is an python application STS (Speech to Speech) to listen your commands and answer your questions using local LLMs and RAG.
 
 ## Installation
 
@@ -22,5 +22,19 @@ cd assets/xtts && wget -c "https://huggingface.co/coqui/XTTS-v2/resolve/main/mod
 ## Usage
 
 ```bash
-python3 app.py
+conda activate ar-butler && python3 app.py
+#ask anything to the model
 ```
+
+## Special Commands
+
+```json
+Learn:  add something on memory
+Forget: remove something from memory
+Dump:   show the memory 
+Exit:   end the application
+```
+
+## Architecture
+
+![Architecture](./assets/arch.png)

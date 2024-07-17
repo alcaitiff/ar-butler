@@ -10,6 +10,8 @@ class XTTS:
   model_object= {}
   config = {}
   cfg = {}
+  gpt_cond_latent = {}
+  speaker_embedding = {}
   def __init__(self, cfg):
     self.model_object = None
     self.speaker = None
@@ -21,14 +23,18 @@ class XTTS:
     self.model_object = Xtts.init_from_config(self.config)
     self.model_object.load_checkpoint(self.config, checkpoint_dir=model_path, eval=True)
     self.model_object.to(torch.device(device))
+    self.gpt_cond_latent, self.speaker_embedding = self.model_object.get_conditioning_latents(audio_path=[self.cfg.tts.speaker_wav])
 
   def predict(self, text):
     lang = self.cfg.transcriptor.language
-    out = self.model_object.synthesize(
-        text.rstrip('.'),
-        config=self.config,
+    text = " \n".join(text.split('. '))
+    out = self.model_object.inference(
+        text=text,
         language=lang,
-        speaker_wav=self.cfg.tts.speaker_wav
+        gpt_cond_latent=self.gpt_cond_latent, 
+        speaker_embedding=self.speaker_embedding,
+        temperature=0.7,
+        enable_text_splitting=True,
+        speed=1.5
     )
     torchaudio.save(self.cfg.tts.audio_file, torch.tensor(out["wav"]).unsqueeze(0), 24000)
-

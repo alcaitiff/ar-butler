@@ -22,7 +22,6 @@ class Rag:
   def encode(self,file_name):
     with open(file_name, "r") as data_file:
       data = self.read_in_model_laguange(data_file)
-      print(data)
       self.embeddings_size = len(data)
     self.embeddings = self.embedder.encode(data, convert_to_tensor=True)
     torch.save(self.embeddings,self.cfg.rag.embeddings_file_path)

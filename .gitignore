@@ -5,4 +5,4 @@ memory.txt
 embeddings.pt
 *.pth
 xtts.wav
-arch.png
+models/*

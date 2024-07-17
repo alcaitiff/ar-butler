@@ -12,6 +12,13 @@
     "speaker_wav": "assets/speakers/Morgan.wav",
     "audio_file": "outputs/xtts.wav"
   },
+  "llm": {
+    "model_path": "models/local/11B-v4-Q5_K_M.gguf",
+    "n_gpu_layers": 20,
+    "n_batch": 4,
+    "n_ctx": 2048,
+    "search_prompt": "Você é um assistente rabugento que responde perguntas mas sempre reclama antes de responder.\nPossivelmente essas informações ajudem na sua resposta: {context}\nPergunta: {question}\nResposta: "
+  },
   "transcriptor": {
     "device": "cuda",
     "language": "pt",

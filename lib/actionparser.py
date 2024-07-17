@@ -1,7 +1,6 @@
 from lib.actions.dump import Dump
 from lib.actions.learn import Learn
 from lib.actions.forget import Forget
-
 class Parser:
   cfg = {}
   def __init__(self, config):
@@ -13,9 +12,12 @@ class Parser:
     except IndexError:
       return ''
 
+  def clean_msg(self,msg):
+    return msg.upper().strip().translate(msg.maketrans(dict.fromkeys(',!.;:', '')))
+
   # Function for detect action
-  def parse_action(self,msg,mic,transcriptor,rag,xtts,player):
-    clean_msg = msg.upper().strip().translate(msg.maketrans(dict.fromkeys(',!.;:', '')))
+  def parse_action(self,msg,mic,transcriptor,rag,xtts,player,llm):
+    clean_msg = self.clean_msg(msg)
     actions = self.cfg.actions
     if clean_msg in actions.exit.keywords:
       raise ValueError("EXIT")
@@ -27,8 +29,11 @@ class Parser:
     if clean_msg in actions.forget.keywords:
       return Forget(self.cfg).do_action(mic,transcriptor,rag)
    
+    msg =  msg.rstrip('.')
     print('\033[32m'+msg+'\033[0m')
     context = rag.retrieve(msg)
-    xtts.predict(msg)
+    ret = llm.invoke(msg,context)
+    print(ret)
+    xtts.predict(ret)
     player.play(self.cfg.tts.audio_file)
     

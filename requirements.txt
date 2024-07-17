@@ -109,3 +109,6 @@ tts
 pyaudio
 translate
 pygobject
+llama-cpp-python
+langchain
+langchain_community
