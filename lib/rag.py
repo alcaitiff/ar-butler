@@ -20,6 +20,9 @@ class Rag:
       self.encode(self.cfg.memory.text_file_path)      
 
   def encode(self,file_name):
+    if not os.path.isfile(file_name):
+      open(file_name,"a").close
+
     with open(file_name, "r") as data_file:
       data = self.read_in_model_laguange(data_file)
       self.embeddings_size = len(data)
