@@ -41,6 +41,8 @@ class Rag:
     with open(self.cfg.memory.text_file_path, "r") as data_file:
       data = data_file.readlines()
       top_k = min(5,len(data))
+      if top_k < 1:
+        return result
       # We use cosine-similarity and torch.topk to find the highest 5 scores
       similarity_scores = self.embedder.similarity(query_embedding, self.embeddings)[0]
       scores, indices = torch.topk(similarity_scores, k=top_k)
