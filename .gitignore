@@ -5,4 +5,4 @@ memory.txt
 embeddings.pt
 *.pth
 xtts.wav
-models/*
+models/local
