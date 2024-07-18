@@ -13,7 +13,7 @@
     "audio_file": "outputs/xtts.wav"
   },
   "llm": {
-    "model_path": "models/local/11B-v4-Q5_K_M.gguf",
+    "model_path": "models/Vicuna-13B-CoT.Q4_K_M.gguf",
     "n_gpu_layers": 20,
     "n_batch": 4,
     "n_ctx": 2048,
@@ -28,7 +28,7 @@
   },
   "mic": {
     "audio_file": "outputs/cache.mp3",
-    "device_index": 4,
+    "device_index": 1,
     "frame_length": 512,
     "silence_frames": 60,
     "volume_threshold": 500,

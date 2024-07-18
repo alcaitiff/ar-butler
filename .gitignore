@@ -6,3 +6,4 @@ embeddings.pt
 *.pth
 xtts.wav
 models/local
+*.gguf
